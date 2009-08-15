@@ -1,0 +1,24 @@
+
+<% unless @username.nil? %>
+<p><tiny> Logged in as <%= @username %> </tiny></p>
+<% end %>
+
+<div id='topnav'>
+
+<table cellpadding='0' border='0'>
+<tr>
+<td><%= link_to image_tag("golden-sun-icon.jpg", :size => "50x50", :border => '0', :valign => 'bottom'), '/welcome' %> &nbsp; </td>
+<td><%= link_to 'Articles', articles_path %> &nbsp; &deg; &nbsp;</td>
+<td><%= link_to 'Users', users_path %> &nbsp; &deg; &nbsp; </td>
+
+<% if @username.nil? %>
+<td>  <%= link_to 'Sign in', :controller => 'visits', :action => 'sign_in' %> </td>
+<% else %>
+	<td> <%= link_to 'Log out', :controller => 'visits', :action => 'sign_out' %></td>
+<% end %>
+
+
+</tr>
+</table>
+</div>
+

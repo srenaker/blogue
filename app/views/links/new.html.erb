@@ -1,0 +1,19 @@
+<h1>New link</h1>
+
+<% form_for(@link) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :url %><br />
+    <%= f.text_field :url, :value => 'http://' %>
+  </p>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', links_path %>

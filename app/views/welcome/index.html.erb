@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title>Le Blogue</title>
+  <%= stylesheet_link_tag 'scaffold' %>
+</head>
+</body> 
+
+<div id="page">
+ <div id="content">
+ <center>	
+ <giant>Le Blogue</giant>
+
+ <br><br>
+ <p>
+ Steve's fabulous multi-user blog app
+ </p>
+
+<%= image_tag "golden-sun-icon.jpg", :size => "100x100", :alt => "the beautiful sun" %>
+
+<p>
+<%= link_to 'Sign in', :controller => 'visits', :action => 'sign_in' %>
+| <%= link_to 'Register', new_user_path %> | <%= link_to 'Enter as guest', articles_path %>
+</p>
+</center>
+ </div>
+</div>
+  </body>
+</html>

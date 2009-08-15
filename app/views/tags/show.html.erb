@@ -1,0 +1,12 @@
+<p>
+  <b>Articles tagged <%=h @tag.tag %>: </b>
+</p>
+
+<% @article_ids.each do |a| %>
+  <% article = Article.find(a.article_id) %>
+
+  <%= link_to article.title, article %><br />
+
+<% end %>
+
+

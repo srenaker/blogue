@@ -1,0 +1,39 @@
+<h1>Le Blogue articles</h1>
+
+<table cellpadding='5' border='0'>
+  <tr>
+
+    <th>Title</th>
+    <th>Author</th>
+	<th>Date</th>
+  </tr>
+
+<% line_num = 1 %>
+<% @articles.each do |article| %>
+  <% article_author = User.find(article.user_id) %>
+  <% if line_num % 2 == 0 %>
+	<tr>
+  <% else %>
+    <tr bgcolor='#cccccc'> 			
+  <% end %>
+
+    <td><%= link_to article.title, article %> &nbsp; </td>
+    <td><%=h article_author.username %> &nbsp; </td>
+    <td><%=h article.created_at.to_s(:short) %> &nbsp; </td>
+
+  <% if article.user_id.to_i == @user_id.to_i %>
+    <td><tiny><%= link_to 'Edit', edit_article_path(article) %> &nbsp; </tiny></td>
+    <td><tiny><%= link_to 'Delete', article, :confirm => 'Are you sure?', :method => :delete %></tiny></td>
+
+  <% end %>
+
+  </tr>
+  <% line_num += 1 %>
+<% end %>
+</table>
+
+<br />
+
+<% unless @username.nil? %>
+<%= link_to 'New article', new_article_path %>
+<% end %>

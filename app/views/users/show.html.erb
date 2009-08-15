@@ -1,0 +1,17 @@
+<p>
+  <h2>Articles by <%=h @user.username %></h2>
+</p>
+
+
+<% if @articles.length > 0 %> 
+  <% @articles.each do |article| %>
+
+  <%= link_to article.title, article %><br>
+	
+  <% end %>
+
+<% else %>
+
+  <%=h @user.username %> hasn't written any articles yet.
+
+<% end %>

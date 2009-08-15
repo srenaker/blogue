@@ -1,0 +1,38 @@
+<h1>Le Blogue users</h1>
+	
+<table cellpadding='5' border='0'>
+  <tr>
+    
+    <th></th>
+	<th>Username</th>
+    <th>Email</th>
+  </tr>
+
+<% @users.each do |user| %>
+  <tr>
+	<% if user.use_gravatar == '1' %>
+		<td><%= image_tag url_for_gravatar(user.email), :size => '60x60' %></td>
+	<% else %>
+		<td></td>
+	<% end %>
+
+    <td><%=h user.username %> </td>
+
+
+    <td><%= mail_to user.email %></td>
+
+    <td><%= link_to 'Articles', user  %></td>
+
+<% if user.id.to_i == @user_id.to_i %>
+    <td><%= link_to 'Edit', edit_user_path(user) %></td>
+    <td><%= link_to 'Delete', user, :confirm => 'Are you sure?', :method => :delete %></td>
+<% end %>
+
+
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New user', new_user_path %>

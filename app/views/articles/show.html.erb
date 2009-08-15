@@ -1,0 +1,53 @@
+
+<p>
+  <title1><%=h @article.title %></title1>
+</p>
+
+<p>
+<i>by <%=h @article_author.username %></i>
+</p>
+
+<p>
+  <%= clean_body = sanitize(@article.body) %>
+  
+</p>
+
+<% if @article_author.username == @username %>
+<%= link_to 'Edit article', edit_article_path(@article) %> 
+<% end %>
+
+<p>
+
+<div id='tags'>
+<b>Tags:</b>
+<%= render :partial => @article.tags %>
+</div>
+</p>
+
+<% form_for [@article, Tag.new] do |f| %>
+<p>
+<%= f.text_field :tag, :size => '10' %>
+<%= f.hidden_field :article_id, :value => @article.id %>
+<%= f.submit "Add tag" %>
+</p>
+<% end %>
+
+<b>Comments:</b>
+<div id="comments">
+<%= render :partial => @article.comments %>
+</div>
+
+
+<% unless @username.nil? %>
+	<% form_for [@article, Comment.new] do |f| %>
+	<p>
+	<%= f.label :body, "New comment" %><br />
+	<%= f.text_area(:body, :size => "40x6") %>
+	<%= f.hidden_field :username, :value => @username %>
+	</p>
+	<p><%= f.submit "Add comment" %>
+	</p>
+	<% end %>
+<% else %>
+	<p><%= link_to  'Sign in', :controller => 'visits', :action => 'sign_in' %> to make comments.</p>
+<% end %>

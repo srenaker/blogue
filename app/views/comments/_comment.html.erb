@@ -1,0 +1,11 @@
+<% div_for comment do %>
+
+<p>
+<div id='comment_div'>
+  <% clean_comment_body = sanitize(comment.body) %>
+  <%= clean_comment_body %>
+ <br />
+	<b>posted by <%=h comment.username %> <%= time_ago_in_words(comment.created_at) %> ago</b>
+</div>
+</p>
+<% end %>

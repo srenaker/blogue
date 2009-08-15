@@ -1,0 +1,16 @@
+<div id='sidebar'>
+
+other blogues
+<hr>
+
+<% linklist = Link.all %>
+<% linklist.each do |link| %>
+<%= link_to link.name, link.url %><br>
+<% end %>
+
+<hr>
+
+<% unless @username.nil? %>
+<%= link_to 'Edit sidebar', '/links' %>
+<% end %>
+</div>
